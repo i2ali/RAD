@@ -1,0 +1,76 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Target Info
+##
+TARGETNAME=RADv2.SlicerInterface
+TARGETTYPE=LIBRARY
+TARGET_DESTINATION=Dwm\RADv2
+
+UMTYPE=console
+UMENTRY=wmain
+
+USE_ATL=1
+ATL_VER=71
+
+USE_IOSTREAM=1
+
+USE_MSVCRT=1
+USE_NATIVE_EH=1
+USE_RTTI=1
+
+USE_STL=1
+STL_VER=100
+
+TEST_CODE=1
+UNSAFE_CODE=1
+
+
+##
+## Precompiled Header
+##
+PRECOMPILED_CXX=1
+PRECOMPILED_INCLUDE=Stdafx.h
+PRECOMPILED_SOURCEFILE=Stdafx.cpp
+
+
+##
+## Source Files
+##
+SOURCES=\
+    Channel.cpp \
+    DwmSlicer.cpp \
+    GdiSlicer.cpp \
+    SlicerFactory.cpp \
+
+
+##
+## Includes
+##
+INCLUDES= \
+    $(DDK_INC_PATH); \
+    $(WINDOWS_INC_PATH); \
+
+
+##
+## Published Headers
+##
+PASS0_PUBLISH=\
+    {Channel.h=$(WINDOWS_TST_INC_PATH)\RADv2\Channel.h} \
+    {ComputeShaderModel.h=$(WINDOWS_TST_INC_PATH)\RADv2\ComputeShaderModel.h} \
+    {IDwmSlicer.h=$(WINDOWS_TST_INC_PATH)\RADv2\IDwmSlicer.h} \
+    {IGdiSlicer.h=$(WINDOWS_TST_INC_PATH)\RADv2\IGdiSlicer.h} \
+    {ISlicer.h=$(WINDOWS_TST_INC_PATH)\RADv2\ISlicer.h} \
+    {ISlicerFactory.h=$(WINDOWS_TST_INC_PATH)\RADv2\ISlicerFactory.h} \
+    {SlicerInterface.h=$(WINDOWS_TST_INC_PATH)\RADv2\SlicerInterface.h} \
+
+
+##
+## Published Libraries
+##
+PASS1_PUBLISH=\
+    {$(OBJECT_ROOT)\testsrc\windowstest\dwm\radv2\slicerinterface\$(O)\RADv2.SlicerInterface.lib=$(WINDOWS_TST_LIB_PATH)\RADv2\RADv2.SlicerInterface.lib}

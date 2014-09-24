@@ -1,0 +1,19 @@
+<RuntimeDeployment
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:Deployment \\wexrelease\tools\sparta\deployer\documentation\runtimedeploymentschema.xsd"
+    xmlns="urn:Deployment"
+    
+    Name="RADv2 Unit Test Deployment"
+    DeploymentID="RADv2.UnitTests.Deployment"
+    Description="TAEF tests for RADv2"
+    InstallLocation="[RuntimeDeployments]\RADv2.UnitTests"
+    AddToSystemPath="false">
+
+  <Components>
+    <Component Name="Taef" Deployment="[WEX\OSBinRoot]\WexTest\Deployment\Taef.deployment" Required="true"/>
+  </Components>
+
+  <Files>
+    <File Name="[WEX\TestBinRoot]\NTTEST\WindowsTest\Dwm\RADv2\UnitTests\RADv2.UnitTests.dll"                CopyToWorkingDir="true"/>
+  </Files>
+</RuntimeDeployment>

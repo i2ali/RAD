@@ -1,0 +1,5 @@
+DIRS=\
+    Effects \
+    SlicerInterface \
+    Samples \
+    UnitTests \

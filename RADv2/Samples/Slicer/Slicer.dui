@@ -1,0 +1,163 @@
+<!--@DUICHECK_FILE_EXEMPT -->
+
+<duixml>
+    <stylesheets>
+      <style resid="ImmersiveLight" base="ressheet(ImmersiveStyles, library(dui70.dll), Light)">
+        <TouchButton margin="rect(5rp,5rp,5rp,5rp)"/>
+        <RichText margin="rect(5rp,5rp,5rp,5rp)"/>
+        <TouchEdit2 margin="rect(5rp,5rp,5rp,5rp)"/>
+
+        <if class="ScrollViewer">
+          <if vertical="true">
+            <TouchScrollBar accessible="true" accrole="scrollbar" layoutpos="nineright"/>
+          </if>
+          <if vertical="false">
+            <TouchScrollBar accessible="true" accrole="scrollbar" layoutpos="ninebottom"/>
+          </if>
+          <Viewer layoutpos="nineclient"/>
+        </if>
+      </style>
+
+      <style resid='mysheet' base="ressheet(ImmersiveStyles, library(dui70.dll), Light)">
+        <if id="atom(ExpandoButtonImage)">
+          <Button
+              height="themeable(gtmet(TaskDialog, TDLG_EXPANDOBUTTON, 0, TMT_HEIGHT), '21rp')"
+              width="themeable(gtmet(TaskDialog, TDLG_EXPANDOBUTTON, 0, TMT_WIDTH), '19rp')"
+              margin="themeable(gtmar(TaskDialog, TDLG_IMAGEALIGNMENT, 0, TMT_CONTENTMARGINS), rect(0rp,0rp,10rp,0rp))" />
+          <if selected="true">
+            <Button
+                background="themeable(dtb(TaskDialog, TDLG_EXPANDOBUTTON, TDLGEBS_EXPANDEDNORMAL), dfc(DFC_SCROLL, DFCS_SCROLLUP))" />
+            <if mousefocused="true">
+              <Button
+                  background="themeable(dtb(TaskDialog, TDLG_EXPANDOBUTTON, TDLGEBS_EXPANDEDHOVER), dfc(DFC_SCROLL, DFCS_SCROLLUP))" />
+            </if>
+            <if pressed="true">
+              <Button
+                  background="themeable(dtb(TaskDialog, TDLG_EXPANDOBUTTON, TDLGEBS_EXPANDEDPRESSED), dfc(DFC_SCROLL, DFCS_SCROLLUP))" />
+            </if>
+          </if>
+          <if selected="false">
+            <Button
+                background="themeable(dtb(TaskDialog, TDLG_EXPANDOBUTTON, TDLGEBS_NORMAL), dfc(DFC_SCROLL, DFCS_SCROLLDOWN))" />
+            <if mousefocused="true">
+              <Button
+                  background="themeable(dtb(TaskDialog, TDLG_EXPANDOBUTTON, TDLGEBS_HOVER), dfc(DFC_SCROLL, DFCS_SCROLLDOWN))" />
+            </if>
+            <if pressed="true">
+              <Button
+                  background="themeable(dtb(TaskDialog, TDLG_EXPANDOBUTTON, TDLGEBS_PRESSED), dfc(DFC_SCROLL, DFCS_SCROLLDOWN))" />
+            </if>
+          </if>
+        </if>
+      </style>
+    </stylesheets>
+
+  <element resid="frame" layout="borderlayout()" sheet="ImmersiveLight" background="white" visible="true" borderthickness="rect(1rp, 1rp, 1rp, 1rp)" bordercolor="red">
+    <element id="Atom(Image)" layoutpos="top"/>
+    <RichText id="Atom(Number)" layoutpos="bottom"/>
+  </element>
+  
+  <element resid="main" layout="flowlayout()" sheet="ImmersiveLight" background="white">
+    <touchbutton content="Switch View" id="atom(Switch)"/>
+    <element layout="filllayout()">
+      <RichText content="Capturing" id="Atom(CoverSheet)" visible="false"/>
+      <element id="Atom(View)" layout="verticalflowlayout()" visible="false">
+        <TouchScrollViewer id="atom(ScrollViewer)" active="mouse|keyboard|pointer" layoutpos="top" accessible="true" accrole="pane" xscrollable="true" yscrollable="true"
+                           InteractionMode="TranslateX|TranslateY" behaviors="DUI70::TSVEnableVirtualization()">
+          <Element id="atom(ViewContainer)" active="pointer" layout="flowlayout()"/>
+        </TouchScrollViewer>
+      </element>
+      <element id="Atom(Capture)" layout="flowlayout()">
+        <touchbutton content="Select Region" id="Atom(SelectRegionButton)" active="mouse|keyboard|pointer" loc.id="SelectRegionButton" layoutpos="top"/>
+        <expando id="atom(AdvancedRegionControls)" layout="borderlayout()" layoutpos="top" sheet="mysheet">
+          <element layout="borderlayout()" layoutpos="top" >
+            <accessiblebutton
+                loc.id="EXPANDO_ARROW"
+                id="atom(arrow)"
+                layoutpos="left"
+                layout="borderlayout()"
+                padding="rect(0rp,0rp,5rp,0rp)"
+                accessible="true"
+                accrole="pushbutton"
+                accname="Toggle Expando"
+                accdesc="Show or hide extra information/elements" >
+              <button
+                  id="atom(ExpandoButtonImage)"
+                  sheet="mysheet"
+                  active="inactive"
+                  layoutpos="top" />
+            </accessiblebutton>
+            <element
+                id="atom(expandoLabel)"
+                accessible="true"
+                accrole="statictext"
+                sheet="mysheet"
+                layoutpos="left"
+                padding="rect(0rp,3rp,0rp,0rp)"
+                loc.id="EXPANDO_LABEL"
+                content="Click for advanced region select" />
+          </element>
+          <element
+              id="atom(clipper)"
+              loc.id="EXPANDO_CLIPPER"
+              accessible="true"
+              sheet="mysheet"
+              layout="verticalflowlayout()"
+              layoutpos="top"
+              background="gray">
+
+            <element layout="rowlayout(2, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+              <RichText content="Rect Left:" layoutpos="left"/>
+              <TouchEdit2 content="0" id="Atom(RectLeft)" active="mouse|keyboard|pointer" layoutpos="client"
+                          behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+            </element>
+
+            <element layout="rowlayout(2, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+              <RichText content="Rect Top:" layoutpos="left"/>
+              <TouchEdit2 content="0" id="Atom(RectTop)" active="mouse|keyboard|pointer" layoutpos="client"
+                          behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+            </element>
+
+            <element layout="rowlayout(2, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+              <RichText content="Rect Right:" layoutpos="left"/>
+              <TouchEdit2 content="100" id="Atom(RectRight)" active="mouse|keyboard|pointer" layoutpos="client"
+                          behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+            </element>
+
+            <element layout="rowlayout(2, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+              <RichText content="Rect Bottom:" layoutpos="left"/>
+              <TouchEdit2 content="100" id="Atom(RectBottom)" active="mouse|keyboard|pointer" layoutpos="client"
+                          behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+            </element>
+          </element>
+        </expando>
+
+        <element layout="rowlayout(1, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+          <RichText content="Capture Duartion (seconds):" layoutpos="left"/>
+          <TouchEdit2 content="10" id="Atom(CaptureDuration)" active="mouse|keyboard|pointer" layoutpos="client"
+                      behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+        </element>
+
+        <element layout="rowlayout(1, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+          <RichText content="Max Frames:" layoutpos="left"/>
+          <TouchEdit2 content="500" id="Atom(MaxFrames)" active="mouse|keyboard|pointer" accessible="true" layoutpos="left"
+                      behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+        </element>
+
+        <element layout="rowlayout(1, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+          <RichText content="Save Location:" layoutpos="left"/>
+          <TouchEdit2 content="c:\foo\slicer.png" id="Atom(SaveLocation)" active="mouse|keyboard|pointer" accessible="true" accrole="text" layoutpos="client"
+                      behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+        </element>
+
+        <touchbutton content="Capture" id="Atom(CaptureButton)" active="mouse|keyboard|pointer" layoutpos="top"/>
+
+        <element layout="rowlayout(1, ALIGN_LEFT, ALIGN_CENTER)" layoutpos="top">
+          <RichText content="Slicer Viewer (x86 only):" layoutpos="left"/>
+          <TouchEdit2 active="mouse|keyboard|pointer" id="Atom(SlicerViewerCommandString)" layoutpos="client"
+                      behaviors="Windows.UI.Popups::TouchEditContextMenu()"/>
+        </element>
+      </element>
+    </element>
+  </element>
+</duixml>

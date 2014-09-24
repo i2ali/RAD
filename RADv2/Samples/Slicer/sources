@@ -1,0 +1,82 @@
+##
+## Test binaries need to be test signed in order to run on WOA
+##
+NT_SIGNCODE_PH=1
+
+TARGETNAME=Slicer
+TARGETTYPE=PROGRAM
+TARGET_DESTINATION=Dwm\RADv2\Samples
+
+UMTYPE=windows
+UMENTRY=wwinmain
+
+BUFFER_OVERFLOW_CHECKS=1
+
+
+USE_MSVCRT=1
+USE_NATIVE_EH=1
+
+ATL_VER=80
+USE_STATIC_ATL=1
+
+USE_STL=1
+STL_VER=100
+
+C_DEFINES=$(C_DEFINES) -DUNICODE -D_UNICODE -DDUIDLL
+
+TEST_CODE=1
+
+MUI=0
+MUI_COMMENT=DISABLE_UNDERSTOOD, Internal tool only
+
+DUI_RC_FILE=Slicer.rc
+DUI_LOCALIZATION=0
+DUI_VERIFY=1
+DUI_PATH=$(MAKEDIR)
+!if $(FREEBUILD)
+DUILIB_FLAVOR=
+!else
+DUILIB_FLAVOR=d
+!endif
+
+PRECOMPILED_CXX=1
+PRECOMPILED_INCLUDE=precomp.h
+
+SOURCES=\
+    Slicer.rc    \
+    Slicer.cpp   \
+    RegionSelect.cpp \
+    DUIHelpers.cpp \
+
+DUI_FILES=\
+    $(OBJ_PATH)\$O\Slicer.duip \
+
+INCLUDES=\
+    $(DDK_INC_PATH); \
+    $(WINDOWS_INC_PATH); \
+    $(SHELL_INC_PATH); \
+    $(WINDOWS_TST_ROOT)\Dwm\Radv2\Effects; \
+    $(WINDOWS_TST_ROOT)\Dwm\Radv2\SlicerInterface; \
+    $(WINDOWS_INC_PATH)\DUser; \
+    $(SDK_INC_PATH)\gdiplus; \
+
+TARGETLIBS=\
+    $(MINWIN_SDK_LIB_PATH)\ntdll.lib \
+    $(SDK_LIB_PATH)\shell32.lib \
+    $(SDK_LIB_PATH)\d2d1.lib \
+    $(SDK_LIB_PATH)\d3d11.lib \
+    $(SDK_LIB_PATH)\dxgi.lib \
+    $(SDK_LIB_PATH)\gdi32.lib \
+    $(SDK_LIB_PATH)\kernel32.lib \
+    $(SDK_LIB_PATH)\ole32.lib \
+    $(SDK_LIB_PATH)\user32.lib \
+    $(SDK_LIB_PATH)\uuid.lib \
+    $(SDK_LIB_PATH)\dxguid.lib \
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv2\Effects\$(O)\RADv2.Effects.lib \
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv2\SlicerInterface\$(O)\RADv2.SlicerInterface.lib \
+    $(WINDOWS_LIB_PATH)\dui70$(DUILIB_FLAVOR).lib \
+    $(WINDOWS_LIB_PATH)\duser.lib      \
+    $(SDK_LIB_PATH)\gdiplus.lib \
+    $(SHELL_LIB_PATH)\Windows.ui.immersive.lib        \
+    $(SHELL_LIB_PATH)\uxthemep.lib \
+    
