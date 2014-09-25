@@ -1,0 +1,4 @@
+LIBRARY RAD.SlicerInterface.dll
+
+EXPORTS
+CreateSlicerFactory

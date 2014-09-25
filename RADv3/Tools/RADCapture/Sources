@@ -1,0 +1,58 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Test binaries need to be test signed in order to run on WOA
+##
+NT_SIGNCODE_PH=1
+
+
+##
+## Target Info
+##
+MANAGED_CODE=1
+URT_VER = 4.5
+TARGETNAME=RADCapture
+TARGETTYPE=PROGRAM
+TARGET_DESTINATION=Dwm\RADv3\Tools\RADCapture
+#TEST_CODE=1
+
+#USER_CS_FLAGS=$(USER_CS_FLAGS) /warn:4
+#ASSEMBLY_IDENTITY_PUBLIC_KEY_NAME=none
+
+##
+## Source Files
+##
+SOURCES=\
+    App.xaml.cs \
+    MainWindow.xaml.cs \
+    SelectionWindow.xaml.cs \
+
+MSBUILD_APPDEFFILE=\
+    App.xaml \
+
+MSBUILD_XAMLFILES=\
+    MainWindow.xaml \
+    SelectionWindow.xaml \
+
+
+##
+## References
+##
+REFERENCES=\
+    $(CLR_REF_PATH)\Microsoft.CSharp.metadata_dll; \
+    $(CLR_REF_PATH)\PresentationCore.metadata_dll; \
+    $(CLR_REF_PATH)\PresentationFramework.metadata_dll; \
+    $(CLR_REF_PATH)\System.metadata_dll; \
+    $(CLR_REF_PATH)\System.Core.metadata_dll; \
+    $(CLR_REF_PATH)\System.Data.metadata_dll; \
+    $(CLR_REF_PATH)\System.Data.DataSetExtensions.metadata_dll; \
+    $(CLR_REF_PATH)\System.Xaml.metadata_dll; \
+    $(CLR_REF_PATH)\System.Xml.metadata_dll; \
+    $(CLR_REF_PATH)\System.Xml.Linq.metadata_dll; \
+    $(CLR_REF_PATH)\WindowsBase.metadata_dll; \
+\
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv3\SlicerInterface\Managed\$(O)\RAD.SlicerInterface.Managed.metadata_dll; 

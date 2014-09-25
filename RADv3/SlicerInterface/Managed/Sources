@@ -1,0 +1,73 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Test binaries need to be test signed in order to run on WOA
+##
+NT_SIGNCODE_PH=1
+
+##
+## Target Info
+##
+TARGETNAME=RAD.SlicerInterface.Managed
+TARGETTYPE=DYNLINK
+TARGET_DESTINATION=Dwm\RADv3\SlicerInterface
+
+UMTYPE=windows
+
+MANAGED_CXX=1
+URT_VER=4.5
+
+USE_MSVCRT=1
+USE_RTTI=1
+TEST_CODE=1
+
+
+##
+## Precompiled Header
+##
+PRECOMPILED_CXX=1
+PRECOMPILED_INCLUDE=Stdafx.h
+PRECOMPILED_SOURCEFILE=Stdafx.cpp
+
+
+##
+## Source Files
+##
+SOURCES=\
+    DwmSlicer.cpp \
+    GdiSlicer.cpp \
+    SlicerBase.cpp \
+    SlicerFactory.cpp \
+    SystemBitmap.cpp \
+
+
+##
+## Include Paths
+##
+INCLUDES= \
+    $(WINDOWS_INC_PATH); \
+
+
+##
+## Managed References
+##
+REFERENCES=\
+    $(CLR_REF_PATH)\System.metadata_dll; \
+
+
+##
+## Target Libraries
+##
+TARGETLIBS= \
+    $(SDK_LIB_PATH)\kernel32.lib \
+    $(SDK_LIB_PATH)\user32.lib \
+
+
+##
+## Publish
+##
+PASS1_PUBLISH={$(OBJ_PATH)\$(O)\$(TARGETNAME).metadata_dll=$(WINDOWS_TST_REF_PATH)\$(TARGETNAME).metadata_dll}

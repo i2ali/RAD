@@ -1,0 +1,16 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+TARGETNAME=NOTARGET
+TARGETTYPE=NOTARGET
+TARGET_DESTINATION=Dwm\RADv3\Deployment
+
+
+##
+## Binplace
+##
+PASS_INDEPENDENT_BINPLACE=\
+    -:DEST $(TARGET_DESTINATION) Rad.deployment \

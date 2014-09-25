@@ -1,0 +1,8 @@
+BUILD_PASS1_CONSUMES= \
+    testsrc\windowstest\dwm\radv3\slicerinterface\managed|PASS1 \
+
+PUBLIC_PASS1_CONSUMES= \
+    sdktools\wextest\sparta\runtime\taef\managed\netfx4.5|PASS1 \
+    sdktools\wextest\sparta\runtime\wex.common\managed\netfx4.5|PASS1 \
+    sdktools\wextest\sparta\runtime\wex.logger\interop\netfx4.5|PASS1 \
+

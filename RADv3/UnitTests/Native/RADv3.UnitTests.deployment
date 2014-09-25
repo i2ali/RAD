@@ -1,0 +1,20 @@
+<RuntimeDeployment
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:Deployment \\wexrelease\tools\sparta\deployer\documentation\runtimedeploymentschema.xsd"
+    xmlns="urn:Deployment"
+    
+    Name="RADv3 Unit Test Deployment"
+    DeploymentID="RADv3.UnitTests.Deployment"
+    Description="TAEF tests for RADv3"
+    InstallLocation="[RuntimeDeployments]\RADv3.UnitTests"
+    AddToSystemPath="false">
+
+  <Components>
+    <Component Name="Taef" Deployment="[WEX\OSBinRoot]\WexTest\Deployment\Taef.deployment" Required="true"/>
+  </Components>
+
+  <Files>
+    <File Name="[WEX\TestBinRoot]\NTTEST\WindowsTest\Dwm\RADv3\SlicerInterface\RADv3.SlicerInterface.dll" CopyToWorkingDir="true"/>
+    <File Name="[WEX\TestBinRoot]\NTTEST\WindowsTest\Dwm\RADv3\UnitTests\RADv3.UnitTests.dll"             CopyToWorkingDir="true"/>
+  </Files>
+</RuntimeDeployment>

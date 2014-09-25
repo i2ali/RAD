@@ -1,0 +1,95 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Target Info
+##
+TARGETNAME=RAD.SlicerInterface
+TARGETTYPE=DYNLINK
+TARGET_DESTINATION=Dwm\RADv3\SlicerInterface
+
+UMTYPE=console
+UMENTRY=wmain
+
+USE_ATL=1
+ATL_VER=71
+
+USE_IOSTREAM=1
+
+
+USE_MSVCRT=1
+USE_NATIVE_EH=1
+USE_RTTI=1
+
+USE_STL=1
+STL_VER=100
+
+TEST_CODE=1
+UNSAFE_CODE=1
+
+
+##
+## Precompiled Header
+##
+PRECOMPILED_CXX=1
+PRECOMPILED_INCLUDE=Stdafx.h
+PRECOMPILED_SOURCEFILE=Stdafx.cpp
+
+
+##
+## Source Files
+##
+SOURCES=\
+    Channel.cpp \
+    D2DContext.cpp \
+    DwmSlicer.cpp \
+    GdiSlicer.cpp \
+    SlicerFactory.cpp \
+
+
+##
+## Includes
+##
+INCLUDES= \
+    $(DDK_INC_PATH); \
+    $(WINDOWS_INC_PATH); \
+
+
+##
+## Static Libraries
+##
+TARGETLIBS = \
+    $(SDK_LIB_PATH)\d2d1.lib \
+    $(SDK_LIB_PATH)\d3d11.lib \
+    $(SDK_LIB_PATH)\dxgi.lib \
+    $(SDK_LIB_PATH)\gdi32.lib \
+    $(SDK_LIB_PATH)\kernel32.lib \
+    $(SDK_LIB_PATH)\ole32.lib \
+    $(SDK_LIB_PATH)\user32.lib \
+    $(SDK_LIB_PATH)\uuid.lib \
+\
+    $(WINDOWS_LIB_PATH)\user32p.lib \
+
+##
+## Published Headers
+##
+PASS0_PUBLISH=\
+    {Channel.h=$(WINDOWS_TST_INC_PATH)\RAD\Channel.h} \
+    {ComputeShaderModel.h=$(WINDOWS_TST_INC_PATH)\RAD\ComputeShaderModel.h} \
+    {ID2DContext.h=$(WINDOWS_TST_INC_PATH)\RAD\ID2DContext.h} \
+    {IDwmSlicer.h=$(WINDOWS_TST_INC_PATH)\RAD\IDwmSlicer.h} \
+    {IGdiSlicer.h=$(WINDOWS_TST_INC_PATH)\RAD\IGdiSlicer.h} \
+    {ImageContainerFormat.h=$(WINDOWS_TST_INC_PATH)\RAD\ImageContainerFormat.h} \
+    {ISlicer.h=$(WINDOWS_TST_INC_PATH)\RAD\ISlicer.h} \
+    {ISlicerFactory.h=$(WINDOWS_TST_INC_PATH)\RAD\ISlicerFactory.h} \
+    {SlicerInterface.h=$(WINDOWS_TST_INC_PATH)\RAD\SlicerInterface.h} \
+
+
+##
+## Published Libraries
+##
+PASS1_PUBLISH=\
+    {$(OBJECT_ROOT)\testsrc\windowstest\dwm\radv3\slicerinterface\native\$(O)\RAD.SlicerInterface.lib=$(WINDOWS_TST_LIB_PATH)\RAD\RAD.SlicerInterface.lib}

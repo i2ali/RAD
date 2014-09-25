@@ -1,0 +1,60 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Test binaries need to be test signed in order to run on WOA
+##
+NT_SIGNCODE_PH=1
+
+##
+## Target Info
+##
+TARGETNAME=RAD.TestApp
+TARGETTYPE=PROGRAM
+TARGET_DESTINATION=Dwm\RADv3\Samples
+
+UMTYPE=console
+UMENTRY=wmain
+
+USE_ATL=1
+
+USE_MSVCRT=1
+USE_NATIVE_EH=1
+USE_RTTI=1
+USE_STL=1
+
+ATL_VER=71
+STL_VER=100
+
+TEST_CODE=1
+UNSAFE_CODE=1
+
+
+##
+## Source Files
+##
+SOURCES=\
+    Main.cpp \
+
+
+PASS_INDEPENDENT_BINPLACE=\
+    test1.bmp \
+    test2.bmp \
+
+
+INCLUDES= \
+    $(DDK_INC_PATH); \
+    $(WINDOWS_INC_PATH); \
+    $(WINDOWS_TST_ROOT)\Dwm\RADv3\Effects; \
+    $(WINDOWS_TST_ROOT)\Dwm\RADv3\SlicerInterface\Native; \
+
+
+TARGETLIBS= \
+    $(SDK_LIB_PATH)\ole32.lib \
+    $(SDK_LIB_PATH)\dxguid.lib \
+\
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv3\Effects\$(O)\RAD.Effects.lib \
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv3\SlicerInterface\Native\$(O)\RAD.SlicerInterface.lib \

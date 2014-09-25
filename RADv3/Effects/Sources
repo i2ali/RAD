@@ -1,0 +1,77 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Target Info
+##
+TARGETNAME=RAD.Effects
+TARGETTYPE=DYNLINK
+TARGET_DESTINATION=Dwm\RADv3\Effects
+
+UMTYPE=console
+UMENTRY=wmain
+
+USE_ATL=1
+
+USE_MSVCRT=1
+USE_NATIVE_EH=1
+USE_RTTI=1
+USE_STL=1
+
+ATL_VER=71
+STL_VER=100
+
+TEST_CODE=1
+UNSAFE_CODE=1
+
+
+##
+## Precompiled Header
+##
+PRECOMPILED_CXX=1
+PRECOMPILED_INCLUDE=Stdafx.h
+PRECOMPILED_SOURCEFILE=Stdafx.cpp
+
+
+##
+## Source Files
+##
+SOURCES=\
+    CheckColorDistance.cpp \
+    ColorDistanceToRgb.cpp \
+    DebugImageData.cpp \
+    Invert.cpp \
+    LabColorComparer.cpp \
+    LabImageComparer.cpp \
+    RgbColorComparer.cpp \
+    RgbImageComparer.cpp \
+    RgbToLab.cpp \
+    Tint.cpp \
+
+
+INCLUDES= \
+    $(DDK_INC_PATH); \
+    $(WINDOWS_INC_PATH); \
+
+
+TARGETLIBS= \
+    $(SDK_LIB_PATH)\kernel32.lib \
+    $(SDK_LIB_PATH)\user32.lib \
+    $(SDK_LIB_PATH)\uuid.lib \
+
+
+##
+## Published Headers
+##
+PASS0_PUBLISH=\
+    {RADEffects.h=$(WINDOWS_TST_INC_PATH)\RAD\RADEffects.h} \
+
+
+##
+## Published Libraries
+##
+PASS1_PUBLISH=\
+    {$(OBJECT_ROOT)\testsrc\windowstest\dwm\radv3\effects\$(O)\RAD.Effects.lib=$(WINDOWS_TST_LIB_PATH)\RAD\RAD.Effects.lib} \

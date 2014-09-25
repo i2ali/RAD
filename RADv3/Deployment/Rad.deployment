@@ -1,0 +1,17 @@
+<RuntimeDeployment
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:Deployment \\wexrelease\tools\sparta\deployer\documentation\runtimedeploymentschema.xsd"
+    xmlns="urn:Deployment"
+
+    DeploymentID="RAD"
+    Name="Render Artifact Detection (RAD) Library"
+    Description="Render Artifact Detection library"
+    InstallLocation="[RuntimeDeployments]\Common\Rad"
+    AddToSystemPath="true">
+
+    <Files>
+        <File Name="[WEX\TestBinRoot]\NTTEST\WindowsTest\Dwm\RADv3\Effects\RAD.Effects.dll"                         CopyToWorkingDir="true"/>
+        <File Name="[WEX\TestBinRoot]\NTTEST\WindowsTest\Dwm\RADv3\SlicerInterface\RAD.SlicerInterface.dll"         CopyToWorkingDir="true"/>
+        <File Name="[WEX\TestBinRoot]\NTTEST\WindowsTest\Dwm\RADv3\SlicerInterface\RAD.SlicerInterface.Managed.dll" CopyToWorkingDir="true"/>
+    </Files>
+</RuntimeDeployment>

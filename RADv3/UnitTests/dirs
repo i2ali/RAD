@@ -1,0 +1,4 @@
+DIRS=\
+    Managed{!arm,!arm64} \
+    ManagedLegacy \
+    Native \

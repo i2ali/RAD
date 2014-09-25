@@ -1,0 +1,64 @@
+﻿<Window x:Class="RADCapture.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RAD Capture" Height="263" Width="401" Initialized="Window_Initialized" ResizeMode="NoResize">
+    <Grid Height="212" Width="376">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Virtual Screen:" />
+        <TextBlock Name="mVirtualScreen_TextBlock" Margin="110,0,0,0" />
+
+        <TextBlock Grid.Row="1" Text="Current Selection:" />
+        <TextBlock Grid.Row="1" Name="mCurrentSelection_TextBlock" Margin="110,0,0,0" />
+
+        <TextBlock Grid.Row="2" Text="Max Frames:" />
+        <TextBox Grid.Row="2" Margin="110,0,0,0" Name="mMaxFrames_TextBox" Text="10" PreviewTextInput="mMaxFrames_PreviewTextInput" PreviewKeyDown="mMaxFrames_PreviewKeyDown" TextChanged="mMaxFrames_TextChanged" />
+
+        <TextBlock Grid.Row="3" Text="Skip Frames:" />
+        <TextBox Grid.Row="3" Name="mSkipFrames_TextBox" Margin="110,0,0,0" Text="0" PreviewTextInput="mSkipFrames_PreviewTextInput" TextChanged="mSkipFrames_TextChanged" PreviewKeyDown="mSkipFrames_PreviewKeyDown" />
+
+        <TextBlock Grid.Row="4" Text="Channel:" />
+        <ComboBox Name="mChannel_ComboBox" Grid.Row="4" Margin="110,0,0,0" Text="Channel" SelectedIndex="0">
+            <ComboBoxItem Name="mChannel_Left" Content="Left"/>
+            <ComboBoxItem Name="mChannel_Right" Content="Right"/>
+            <ComboBoxItem Name="mChannel_LeftAndRight" Content="Left And Right"/>
+        </ComboBox>
+
+        <TextBlock Grid.Row="5" Text="Start Capture Delay:" />
+        <TextBox Grid.Row="5" Name="mStartCaptureDelay_TextBox" Margin="110,0,0,0" Text="0" PreviewTextInput="mStartCaptureDelay_PreviewTextInput" TextChanged="mStartCaptureDelay_TextChanged" PreviewKeyDown="mStartCaptureDelay_PreviewKeyDown" />
+
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Name="mCancel_Button" Content="Cancel Capture" Click="mCancel_Button_Click" />
+            <Button Grid.Column="1" Name="mAreaSelect_Button" Content="Area Select" Click="mAreaSelectButton_Click" />
+            <Button Grid.Column="2" Name="mStartCapture_Button" Content="Start Capture" Click="mStartCaptureButton_Click" HorizontalAlignment="Right" Width="89" />
+            <Button Grid.Column="3" Name="mEndCapture_Button" Content="End Capture" Click="mEndCaptureButton_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Name="mStatus_TextBlock" Foreground="#FF168ED5" FontSize="20" />
+            <TextBlock Grid.Column="1" Name="mCountDown_TextBlock" Text="-" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF168ED5" FontSize="20" />
+        </Grid>
+    </Grid>
+</Window>

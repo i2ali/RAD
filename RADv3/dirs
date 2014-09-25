@@ -1,0 +1,7 @@
+DIRS=\
+    Deployment \
+    Effects \
+    Samples \
+    SlicerInterface \
+    Tools \
+    UnitTests \

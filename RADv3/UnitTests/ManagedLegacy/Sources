@@ -1,0 +1,48 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Test binaries need to be test signed in order to run on WOA
+##
+NT_SIGNCODE_PH=1
+
+
+##
+## Target Info
+##
+MANAGED_CODE=1
+URT_VER=4.5
+TARGETNAME=RADv3.UnitTests.Managed.Legacy
+TARGETTYPE=DYNLINK
+TARGET_DESTINATION=Dwm\RADv3\UnitTests
+
+
+##
+## Source Files
+##
+SOURCES=\
+    Basic.cs \
+
+
+##
+## References
+##
+REFERENCES=\
+    $(CLR_REF_PATH)\System.metadata_dll; \
+    $(CLR_REF_PATH)\System.Drawing.metadata_dll; \
+\
+    $(SDKTOOLS_REF_PATH)\WexTest\Cue\TE.managed.metadata_dll; \
+    $(SDKTOOLS_REF_PATH)\WexTest\Cue\Wex.Common.managed.metadata_dll; \
+    $(SDKTOOLS_REF_PATH)\WexTest\Cue\Wex.Logger.Interop.metadata_dll; \
+\
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv3\SlicerInterface\Managed\$(O)\RAD.SlicerInterface.Managed.metadata_dll; 
+
+
+##
+## Data Files
+##
+PASS_INDEPENDENT_BINPLACE=\
+    RADv3.UnitTests.Managed.Legacy.deployment \

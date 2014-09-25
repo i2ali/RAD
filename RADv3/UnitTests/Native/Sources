@@ -1,0 +1,97 @@
+##------------------------------------------------------------------------------
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+##------------------------------------------------------------------------------
+
+##
+## Test binaries need to be test signed in order to run on WOA
+##
+NT_SIGNCODE_PH=1
+
+
+##
+## Target Info
+##
+TARGETNAME         = RADv3.UnitTests
+TARGETTYPE         = DYNLINK
+TARGET_DESTINATION = Dwm\RADv3\UnitTests
+DLLDEF             = RADv3.UnitTests.def
+
+C_DEFINES=$(C_DEFINES) -DUNICODE -D_UNICODE
+
+USE_ATL=1
+
+USE_MSVCRT=1
+USE_NATIVE_EH=1
+USE_RTTI=1
+USE_STL=1
+
+ATL_VER=71
+STL_VER=100
+
+TEST_CODE=1
+UNSAFE_CODE=1
+
+
+##
+## Precompiled Header
+##
+PRECOMPILED_CXX=1
+PRECOMPILED_INCLUDE=Stdafx.h
+PRECOMPILED_SOURCEFILE=Stdafx.cpp
+
+
+##
+## Source Files
+##
+SOURCES = \
+    Effects.cpp \
+    SlicerBadParameters.cpp \
+    SlicerBoundaryCases.cpp \
+    DwmSlicerBoundaryCases.cpp \
+    DwmSlicerCaptureParameters.cpp \
+    DwmSlicerOutOfMemory.cpp \
+    GdiSlicerCaptureParameters.cpp \
+    GdiSlicerOutOfMemory.cpp \
+
+
+##
+## Data Files
+##
+PASS_INDEPENDENT_BINPLACE=\
+    RADv3.UnitTests.deployment \
+
+
+##
+## Include Directories
+##
+INCLUDES= \
+    $(INCLUDES); \
+    $(DDK_INC_PATH); \
+    $(SDKTOOLS_INC_PATH)\wextest\cue; \
+    $(SDKTOOLS_INC_PATH)\wextest\tools; \
+    $(WINDOWS_INC_PATH); \
+    $(WINDOWS_TST_ROOT)\Dwm\Common\Utilities; \
+    $(WINDOWS_TST_ROOT)\Dwm\RADv3\Effects; \
+    $(WINDOWS_TST_ROOT)\Dwm\RADv3\SlicerInterface\Native; \
+
+##
+## Static Libraries
+##
+TARGETLIBS = \
+    $(SDKTOOLS_LIB_PATH)\wextest\cue\te.common.lib \
+    $(SDKTOOLS_LIB_PATH)\wextest\cue\wex.common.lib \
+    $(SDKTOOLS_LIB_PATH)\wextest\cue\wex.logger.lib \
+\
+    $(SDK_LIB_PATH)\d3d11.lib \
+    $(SDK_LIB_PATH)\dxgi.lib \
+    $(SDK_LIB_PATH)\kernel32.lib \
+    $(SDK_LIB_PATH)\ole32.lib \
+\
+    $(WINDOWS_LIB_PATH)\user32p.lib \
+\
+    $(WINDOWS_LIB_PATH)\utilities_one.lib \
+    $(WINDOWS_LIB_PATH)\utilities_two.lib \
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv3\Effects\$(O)\RAD.Effects.lib \
+    $(WINDOWS_TST_OBJ_ROOT)\Dwm\RADv3\SlicerInterface\Native\$(O)\RAD.SlicerInterface.lib \

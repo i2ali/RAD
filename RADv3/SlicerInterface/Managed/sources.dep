@@ -1,0 +1,15 @@
+PUBLIC_PASS1_CONSUMES= \
+    base\win32\client\daytona|PASS1 \
+    com\ole32\dll\daytona|PASS1 \
+    mergedcomponents\uuid|PASS1 \
+    minkernel\crts\crtw32\helper\nt|PASS1 \
+    minkernel\crts\crtw32\linkopts\nothrownewlib|PASS1 \
+    minkernel\crts\crtw32\linkopts\portingonly|PASS1 \
+    minkernel\crts\crtw32\misc\nt|PASS1 \
+    minkernel\crts\libw32\lib\dlllib|PASS1 \
+    minkernel\crts\libw32\lib\extdlllib|PASS1 \
+    minkernel\crts\libw32\lib\managed40mixed_staticlib|PASS1 \
+    minkernel\published\base|PASS1 \
+    minkernel\tools\gs_support\gs_cookie|PASS1 \
+    windows\core\ntuser\client\daytona|PASS1 \
+

@@ -1,0 +1,11 @@
+﻿<Window x:Class="RADCapture.SelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SelectionWindow" Height="300" Width="300" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" WindowStyle="None" AllowsTransparency="True" Opacity="0.5" Cursor="Cross" MouseMove="Window_MouseMove" MouseDown="Window_MouseDown" MouseUp="Window_MouseUp" KeyDown="Window_KeyDown">
+    <Grid Background="#FF2681BA">
+        <Line Name="mLine1" Visibility="Hidden" Stroke="#FFE23C17"></Line>
+        <Line Name="mLine2" Visibility="Hidden" Stroke="#FFE23C17"></Line>
+        <Line Name="mLine3" Visibility="Hidden" Stroke="#FFE23C17"></Line>
+        <Line Name="mLine4" Visibility="Hidden" Stroke="#FFE23C17"></Line>
+    </Grid>
+</Window>

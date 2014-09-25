@@ -1,0 +1,5 @@
+LIBRARY RAD.Effects.dll
+
+EXPORTS
+RADRegisterEffects
+RADUnregisterEffects
